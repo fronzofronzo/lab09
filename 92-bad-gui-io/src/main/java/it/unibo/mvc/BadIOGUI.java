@@ -66,6 +66,16 @@ public class BadIOGUI {
                 }
             }
         });
+
+    /*
+     * my part of the exercise 
+     */
+        final JPanel myPanel = new JPanel();
+        myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.LINE_AXIS));
+        canvas.removeAll();
+        canvas.add(myPanel, BorderLayout.CENTER);
+        myPanel.add(write);
+
     }
 
     private void display() {
@@ -87,6 +97,10 @@ public class BadIOGUI {
          * on screen. Results may vary, but it is generally the best choice.
          */
         frame.setLocationByPlatform(true);
+        /*
+         * resizing my Frame to the minum size
+         */
+        frame.pack();
         /*
          * OK, ready to push the frame onscreen
          */

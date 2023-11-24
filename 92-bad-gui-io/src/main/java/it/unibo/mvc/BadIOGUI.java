@@ -14,7 +14,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
 
@@ -76,7 +77,7 @@ public class BadIOGUI {
         canvas.add(myPanel, BorderLayout.CENTER);
         myPanel.add(write);
         /*
-         * ex. 01.02
+         * ex. 01.02 and ex 01.03
          */
         final JButton read = new JButton("Read");
         myPanel.add(read);
@@ -84,10 +85,20 @@ public class BadIOGUI {
 
             @Override
             public void actionPerformed(final ActionEvent e) {
-                System.out.println("Testing read button");
+                try {
+                    final Path p = Paths.get(PATH);
+                    final List<String> content = java.nio.file.Files.readAllLines(p, StandardCharsets.UTF_8);
+                    for(String line : content) { 
+                        System.out.println(line);
+                    }
+                } catch (IOException err) {
+                    JOptionPane.showMessageDialog(frame, err, "Error" , JOptionPane.ERROR_MESSAGE);
+                    err.printStackTrace();
+                }
             }
             
         });
+
     }
 
     private void display() {

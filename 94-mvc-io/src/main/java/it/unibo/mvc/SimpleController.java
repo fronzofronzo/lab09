@@ -1,6 +1,6 @@
 package it.unibo.mvc;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -13,7 +13,7 @@ public final class SimpleController implements Controller {
     private List<String> history;
 
     public SimpleController() {
-        history = new ArrayList<>();
+        history = new LinkedList<>();
     }
 
     @Override
@@ -31,7 +31,7 @@ public final class SimpleController implements Controller {
 
     @Override
     public List<String> getHistory() {
-        return new ArrayList<>(List.copyOf(history));
+        return new LinkedList<>(List.copyOf(history));
     }
 
     @Override
